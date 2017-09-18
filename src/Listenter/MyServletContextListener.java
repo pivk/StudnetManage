@@ -14,7 +14,7 @@ public class MyServletContextListener implements ServletContextListener{
 
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) {
-		  System.out.println("ServletContext创建");
+/*		  System.out.println("ServletContext创建");
 	       ServletContext servletContext = sce.getServletContext();
 	       String currentTime = "2017-07-11 13:51:00";
 	       java.util.Date date = null;
@@ -23,8 +23,8 @@ public class MyServletContextListener implements ServletContextListener{
 	           date = simpleDateFormat.parse(currentTime);
 	       } catch (ParseException e) {
 	           e.printStackTrace();
-	       }
-	       //Timer定时器
+	       }*/
+/*	       //Timer定时器
 	       //task 任务
 	       //firstTime 第一次执行时间
 	       //period 间隔执行时间
@@ -42,6 +42,7 @@ public class MyServletContextListener implements ServletContextListener{
 	       //起始时间：定义成晚上12点
 	       //间隔时间：24小时
 		
+	}*/
 	}
 
 	@Override

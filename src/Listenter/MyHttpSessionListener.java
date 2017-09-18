@@ -1,7 +1,14 @@
 package Listenter;
 
+import java.util.List;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextListener;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
+
+import POJO.Manager;
 
 public class MyHttpSessionListener implements HttpSessionListener {
 
@@ -13,7 +20,14 @@ public class MyHttpSessionListener implements HttpSessionListener {
 
 	@Override
 	public void sessionDestroyed(HttpSessionEvent se) {
-	       System.out.println("SessionÏú»Ù");
+		HttpSession httpSession = se.getSession();
+		ServletContext servletContext = httpSession.getServletContext();
+		List<Manager> onLinrManageList = (List<Manager>) servletContext;
+		Manager manage = (Manager) httpSession.getAttribute("student");
+		if (manage != null) {
+			onLinrManageList.remove(manage);
+
+		}
 
 	}
 

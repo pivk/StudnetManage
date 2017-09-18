@@ -35,6 +35,8 @@ public interface IStudentDao {
 
 	// 管理人员数据库全部展开
 	public List<Manager> selectAll_Manager();
+	//登录
+	public Manager selectBynamePassword(String name,String password);
 
 	// 查询指定地址学生信息
 	public List<Student> selectByAddress(String address);

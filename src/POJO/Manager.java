@@ -79,6 +79,13 @@ public class Manager implements Serializable {
 		this.password = password;
 	}
 
+	public Manager(int id, String account, String password) {
+		super();
+		this.id = id;
+		this.account = account;
+		this.password = password;
+	}
+
 	public Manager() {
 		super();
 		// TODO Auto-generated constructor stub

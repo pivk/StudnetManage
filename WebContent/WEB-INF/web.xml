@@ -30,6 +30,16 @@
 		<url-pattern>/managersServlet</url-pattern>
 	</servlet-mapping>
 	
+	<!-- 分界线 -->
+	<servlet>
+		<servlet-name>ClasscourseSerlevt</servlet-name>
+		<servlet-class>controller.Classcourseselevt</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ClasscourseSerlevt</servlet-name>
+		<url-pattern>/Classcourseselevt</url-pattern>
+	</servlet-mapping>
+	
 	
 	
 	<!-- 分界线 -->

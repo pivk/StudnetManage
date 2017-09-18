@@ -1,4 +1,4 @@
-package BLL;
+package serivices;
 
 import java.util.Date;
 import java.util.List;
@@ -33,6 +33,8 @@ public interface IStudentServers {
 
 	// 管理人员数据库全部展开
 	List<Manager> selectAll_Manager();
+
+    Manager selectBynamePassword();
 
 	// 查询指定地址学生信息
 	List<Student> selectByAddress(String address);

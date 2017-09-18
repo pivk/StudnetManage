@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import BLL.IStudentServers;
-import BLL.StudentServerImpl;
 import POJO.Student;
+import serivices.IStudentServers;
+import serviceImpl.StudentServerImpl;
 
 public class updateStudentServlet extends HttpServlet {
 	@Override

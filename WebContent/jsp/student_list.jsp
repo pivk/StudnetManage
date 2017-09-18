@@ -36,7 +36,7 @@
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#">学生管理</a></li>
 			<li><a href="#">班级管理</a></li>
-			<li><a href="#">课程管理</a></li>
+			<li><a href="${pageContext.request.contextPath}/Classcourseselevt?methods=findAllStudent">课程管理</a></li>
 			<li><a href="#">教务管理</a></li>
 			<li style="float: right;">
 				<!--注销按钮执行loginOutServlet-->

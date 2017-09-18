@@ -1,4 +1,4 @@
-package BLL;
+package serviceImpl;
 
 import java.util.Date;
 import java.util.List;
@@ -8,6 +8,7 @@ import DAO.StudentDaoMysqlImpl;
 import DIYexception.NameRepeatE;
 import POJO.Manager;
 import POJO.Student;
+import serivices.IStudentServers;
 import vo.PageBean;
 import vo.selectCondition;
 
@@ -90,6 +91,11 @@ public class StudentServerImpl implements IStudentServers {
 		for (String string : ids) {
 			studentDao.deleteById(Integer.parseInt(string));
 		}
+	}
+
+	@Override
+	public Manager selectBynamePassword() {
+		return null;
 	}
 
 	

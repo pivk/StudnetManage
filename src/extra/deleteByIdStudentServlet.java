@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import BLL.IStudentServers;
-import BLL.StudentServerImpl;
+import serivices.IStudentServers;
+import serviceImpl.StudentServerImpl;
 
 public class deleteByIdStudentServlet extends HttpServlet{
 @Override

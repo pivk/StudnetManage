@@ -379,5 +379,31 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 		System.out.println(count);
 		return count;
 	}
+@Override
+public Manager selectBynamePassword(String name, String password) {
+	Manager manager = new Manager();
+
+	try {
+		connection = DBUtil.getConnection();
+		String sql = "select  id,password,account from manager where account=?, password=?";
+		preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setString(1,name );
+		preparedStatement.setString(2, password);
+		resultSet = preparedStatement.executeQuery();
+		if (resultSet != null) {
+			while (resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String account = resultSet.getString("account");
+				String password1 = resultSet.getString("password");
+				Manager manager1 = new Manager(id,account,password1);
+			}
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		DBUtil.close(connection, preparedStatement, resultSet);
+}
+	return null;
+}
 
 }

@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import BLL.IStudentServers;
-import BLL.StudentServerImpl;
 import POJO.Manager;
+import serivices.IStudentServers;
+import serviceImpl.StudentServerImpl;
 
 public class ManagersServlet extends HttpServlet {
 	IStudentServers studentServers = new StudentServerImpl();
@@ -26,4 +26,5 @@ public class ManagersServlet extends HttpServlet {
 		req.setAttribute("list", list);
 		req.getRequestDispatcher("/jsp/managers_list.jsp").forward(req, resp);
 	}
+	
 }
