@@ -14,9 +14,7 @@ private int money = 1000;
 @Override
 protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	synchronized (this) {
-        //Ä£ÄâÈ¡Ç®
         if (money  >= 1000) {
-            //ÍøÂçÑÓ³Ù
             try {
                Thread.sleep(5000);
             } catch (InterruptedException e) {
@@ -24,10 +22,9 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
             }
             money = money - 1000;
         }
-        //ÏÔÊ¾Êý¾Ý
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter printWriter = resp.getWriter();
-        printWriter.println("Ê£Óà£º" + money);
+        printWriter.println("Ê£ï¿½à£º" + money);
     }
 
 }

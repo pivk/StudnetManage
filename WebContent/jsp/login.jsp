@@ -71,7 +71,12 @@
 
 
 	<div class="account-container">
-
+        
+        
+           <h3>${err1}</h3>  
+           
+           <h3>${err2}</h3>  
+             
 		<div class="content clearfix">
 
 			<form

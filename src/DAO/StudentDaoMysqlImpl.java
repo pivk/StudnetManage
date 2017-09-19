@@ -19,7 +19,7 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 	static ResultSet resultSet = null;
 
 	@Override
-	// **********************Ìí¼ÓÑ§Éú·½·¨**********************
+	// **********************ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½**********************
 	public int add(Student student) {
 		int result = 0;
 		try {
@@ -42,7 +42,7 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 	}
 
 	@Override
-	// **********************É¾³ıÖ¸¶¨idµÄÑ§Éú·½·¨**********************
+	// **********************É¾ï¿½ï¿½Ö¸ï¿½ï¿½idï¿½ï¿½Ñ§ï¿½ï¿½**********************
 	public int deleteById(int id) {
 		int result = 0;
 		try {
@@ -60,7 +60,7 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 	}
 
 	@Override
-	// **********************ĞŞ¸ÄÖ¸¶¨IDµÄÑ§ÉúĞÅÏ¢·½·¨**********************
+	// **********************ï¿½Ş¸ï¿½Ö¸ï¿½ï¿½IDï¿½ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½**********************
 	public int update(Student student) {
 		int result = 0;
 		try {
@@ -83,7 +83,6 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 	}
 
 	@Override
-	// **********************²é¿´È«²¿Ñ§ÉúĞÅÏ¢·½·¨**********************
 	public List<Student> selectAll() {
 		List<Student> studentsList = new ArrayList<Student>();
 		try {
@@ -114,7 +113,7 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 	}
 
 	@Override
-	// **********************²é¿´Ö¸¶¨idµÄÑ§ÉúĞÅÏ¢**********************
+	// **********************ï¿½é¿´Ö¸ï¿½ï¿½idï¿½ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½Ï¢**********************
 	public List<Student> selectById(int id) {
 		List<Student> studentsList = new ArrayList<Student>();
 		try {
@@ -146,7 +145,6 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 	}
 
 	@Override
-	// **********************²é¿´Ö¸¶¨Ãû×ÖµÄÑ§ÉúĞÅÏ¢**********************
 	public List<Student> selectByName(String name) {
 		List<Student> studentsList = new ArrayList<Student>();
 		try {
@@ -177,7 +175,6 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 		return studentsList;
 	}
 
-	// ¼ì²éÊı¾İ¿âÊÇ·ñÓĞÓë±»Ìí¼ÓÑ§ÉúÃû×ÖÏàÍ¬µÄ´æÔÚ
 	public boolean checkName(String name) {
 		boolean isBe = false;
 		try {
@@ -200,7 +197,6 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 		return isBe;
 	}
 
-	// ²éÕÒÖ¸¶¨³öÉúÈÕÆÚÇø¼äµÄÑ§ÉúĞÅÏ¢
 	public List<Student> selectByBirthday(Date startbirthday, Date endbirthday) {
 		List<Student> studentsList = new ArrayList<Student>();
 		try {
@@ -229,7 +225,6 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 		return studentsList;
 	}
 
-	// ¹ÜÀíÈËÔ±Êı¾İ¿âÈ«²¿Õ¹¿ª
 	@Override
 	public List<Manager> selectAll_Manager() {
 		List<Manager> list = new ArrayList<Manager>();
@@ -255,7 +250,6 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 		return list;
 	}
 
-	// ²éÑ¯Ö¸¶¨µØÖ·Ñ§ÉúĞÅÏ¢
 	public List<Student> selectByAddress(String address) {
 		List<Student> studentsList = new ArrayList<Student>();
 		try {
@@ -286,7 +280,6 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 		return studentsList;
 	}
 
-	// ¶àÌõ¼şËÑË÷
 	public List<Student> searchByCondition(selectCondition searchCondition) {
 		List<Student> studentsList = new ArrayList<Student>();
 		try {
@@ -334,7 +327,6 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 		return studentsList;
 	}
 
-	// ·ÖÒ³ÏÔÊ¾
 	public List<Student> findPageBeanList(int index, int pageSize) {
 		List<Student> list = new ArrayList<Student>();
 		try {
@@ -360,7 +352,6 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 		return list;
 	}
 
-	// ·ÖÒ³---»ñµÃÊı¾İ¿âÖĞĞÅÏ¢×ÜÊı
 	public int getTotalCount() {
 		int count = 0;
 		try {
@@ -379,13 +370,13 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 		System.out.println(count);
 		return count;
 	}
+	
 @Override
 public Manager selectBynamePassword(String name, String password) {
 	Manager manager = new Manager();
-
 	try {
 		connection = DBUtil.getConnection();
-		String sql = "select  id,password,account from manager where account=?, password=?";
+		String sql = "select  id,password,account from manager where account=? and password=? ";
 		preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1,name );
 		preparedStatement.setString(2, password);

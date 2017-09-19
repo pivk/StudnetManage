@@ -14,7 +14,7 @@ public class MyHttpSessionListener implements HttpSessionListener {
 
 	@Override
 	public void sessionCreated(HttpSessionEvent se) {
-		System.out.println("Session´´½¨ SessionID: " + se.getSession().getId());
+		System.out.println("Sessionåˆ›å»º SessionID: " + se.getSession().getId());
 
 	}
 
@@ -23,7 +23,7 @@ public class MyHttpSessionListener implements HttpSessionListener {
 		HttpSession httpSession = se.getSession();
 		ServletContext servletContext = httpSession.getServletContext();
 		List<Manager> onLinrManageList = (List<Manager>) servletContext;
-		Manager manage = (Manager) httpSession.getAttribute("student");
+		Manager manage = (Manager) httpSession.getAttribute("manager");
 		if (manage != null) {
 			onLinrManageList.remove(manage);
 

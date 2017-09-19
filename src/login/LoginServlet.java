@@ -13,34 +13,40 @@ import serviceImpl.StudentServerImpl;
 
 public class LoginServlet extends HttpServlet {
 
-	// ��¼��֤
+	// 登录验证
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
+		HttpSession session = req.getSession();
+
+		String userName = req.getParameter("userName");
+		String password = req.getParameter("password");
+		IStudentServers service = new StudentServerImpl();
+		Manager ma = service.selectBynamePassword(userName, password);
+
 		String checkCode = req.getParameter("checkCode");
 		String checkCodeSession = (String) req.getSession().getAttribute("checkCodeSession");
+
 		if (checkCode == null || checkCode.equals("")) {
 			resp.sendRedirect(req.getContextPath() + "/jsp/login.jsp");
 			return;
 		}
+
 		if (!checkCode.equalsIgnoreCase(checkCodeSession)) {
+			session.setAttribute("err2", "验证码错误");
 			resp.sendRedirect(req.getContextPath() + "/jsp/login.jsp");
 			return;
 		}
-		String userName = req.getParameter("userName");
-		String password = req.getParameter("password");
-		
-		IStudentServers service = new StudentServerImpl();
-		Manager ma = service.selectBynamePassword();
-			
-		if (ma.getAccount().equals(userName) && ma.getPassword().equals(password)) {
-			HttpSession session = req.getSession();
+
+		if (ma != null) {
 			session.setAttribute("userName", userName);
 			List<Manager> onLineAdminList = (List<Manager>) getServletContext().getAttribute("onLineAdminList");
 			onLineAdminList.add(ma);
 			resp.sendRedirect(req.getContextPath() + "/student?method=pageList");
 		} else {
-			resp.sendRedirect(req.getContextPath() + "/jsp/login.jsp");
+
+			session.setAttribute("err1", "账户密码错误");
+			resp.sendRedirect(req.getContextPath() + "/student?method=pageList");
 		}
 
 	}

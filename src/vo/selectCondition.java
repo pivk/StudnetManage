@@ -3,11 +3,13 @@ package vo;
 import java.io.Serializable;
 
 public class selectCondition implements Serializable{
+
 	private String id;
 	private String name;
 	private String age;
 	private String gender;
 	private String address;
+	
 	public String getId() {
 		return id;
 	}

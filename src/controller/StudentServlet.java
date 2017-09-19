@@ -20,7 +20,7 @@ import vo.selectCondition;
 public class StudentServlet extends controller.BaseServlet {
 	IStudentServers studentServers = new StudentServerImpl();
 
-	// ¶àÌõ¼þËÑË÷
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private void selectByCondition(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String id = req.getParameter("id");
@@ -35,7 +35,7 @@ public class StudentServlet extends controller.BaseServlet {
 		req.getRequestDispatcher("/jsp/student_list.jsp").forward(req, resp);
 	}
 
-	// ²éÑ¯Ö¸¶¨³öÉúÈÕÆÚÇø¼äÑ§ÉúÐÅÏ¢
+	// ï¿½ï¿½Ñ¯Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½Ï¢
 	private void toselectByBirthday(HttpServletRequest req, HttpServletResponse resp)
 			throws ParseException, ServletException, IOException {
 		String startbirthday1 = req.getParameter("startbirthday");
@@ -55,8 +55,7 @@ public class StudentServlet extends controller.BaseServlet {
 		}
 	}
 
-	// ²éÑ¯Ö¸¶¨NameÑ§ÉúÐÅÏ¢
-	private void toselectByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+ 	private void toselectByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String name = req.getParameter("name1");
 		List<Student> list = studentServers.selectByName(name);
 		if (!list.isEmpty()) {
@@ -67,7 +66,6 @@ public class StudentServlet extends controller.BaseServlet {
 		}
 	}
 
-	// ²éÑ¯Ö¸¶¨µØÖ·Ñ§ÉúÐÅÏ¢
 	private void toselectByAddress(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String address = req.getParameter("address");
@@ -80,7 +78,7 @@ public class StudentServlet extends controller.BaseServlet {
 		}
 	}
 
-	// Õ¹Ê¾Ñ§ÉúÐÅÏ¢ÐÞ¸ÄÒ³Ãæ
+ 
 	private void toUpdateStudent(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String id = req.getParameter("id");
@@ -89,7 +87,7 @@ public class StudentServlet extends controller.BaseServlet {
 		req.getRequestDispatcher("/jsp/student_update.jsp").forward(req, resp);
 	}
 
-	// ÐÞ¸ÄÑ§ÉúÐÅÏ¢
+
 	private void updateStudent(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		String id = req.getParameter("id");
 		String name = req.getParameter("name");
@@ -109,14 +107,12 @@ public class StudentServlet extends controller.BaseServlet {
 		resp.sendRedirect("/qw/student?method=pageList");
 	}
 
-	// É¾³ýÑ§ÉúÐÅÏ¢
 	private void deleteStudent(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		String id = req.getParameter("id");
 		studentServers.deleteById(Integer.parseInt(id));
 		resp.sendRedirect("/qw/student?method=pageList");
 	}
 
-	// Ìí¼ÓÑ§ÉúÐÅÏ¢
 	private void addStudent(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		String name = req.getParameter("name");
 		String age = req.getParameter("age");
@@ -139,14 +135,12 @@ public class StudentServlet extends controller.BaseServlet {
 		resp.sendRedirect("/qw/student?method=pageList");
 	}
 
-	// ²é¿´È«²¿Ñ§ÉúÐÅÏ¢
 	private void findAllStudent(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		List<Student> list = studentServers.selectAll();
 		req.setAttribute("list", list);
 		req.getRequestDispatcher("/jsp/student_list.jsp").forward(req, resp);
 	}
 
-	// ·ÖÒ³·â×°½á¹û¼¯
 	private void pageList(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		String PageIndexStr = req.getParameter("pageIndex");
 		String PageSizeStr = req.getParameter("pageSize");
@@ -165,7 +159,6 @@ public class StudentServlet extends controller.BaseServlet {
 		req.getRequestDispatcher("/jsp/student_list.jsp").forward(req, resp);
 	}
 
-	// ÅúÁ¿É¾³ý
 	private void deleteAll(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		String[] ids = req.getParameterValues("selectIds");
 		studentServers.deleteAll(ids);
