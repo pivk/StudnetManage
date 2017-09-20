@@ -18,9 +18,9 @@ import vo.PageBean;
 import vo.selectCondition;
 
 public class StudentServlet extends controller.BaseServlet {
+	
 	IStudentServers studentServers = new StudentServerImpl();
 
-	// ����������
 	private void selectByCondition(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String id = req.getParameter("id");
@@ -35,7 +35,6 @@ public class StudentServlet extends controller.BaseServlet {
 		req.getRequestDispatcher("/jsp/student_list.jsp").forward(req, resp);
 	}
 
-	// ��ѯָ�������������ѧ����Ϣ
 	private void toselectByBirthday(HttpServletRequest req, HttpServletResponse resp)
 			throws ParseException, ServletException, IOException {
 		String startbirthday1 = req.getParameter("startbirthday");

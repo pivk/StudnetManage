@@ -19,21 +19,22 @@ public class BaseServlet extends HttpServlet {
 			return;
 		}
 		String userName = (String) session.getAttribute("userName");
+		
 		if (userName == null) {
+			
 			resp.sendRedirect(req.getContextPath() + "/jsp/login.jsp");
 			return;
 		}
+		
+		
 		req.setCharacterEncoding("utf-8");
-		// 1、获得请求的method方法的名字
 		String methodName = req.getParameter("method");
-		// 2、获取当前被访问的对象的字节码对象
 		// StudentMainServlet.class ClassMainServlet.class
 		Class clazz = this.getClass();
-		// 3、获取当前字节码对象中指定的方法
+		
 		try {
 			Method method = clazz.getDeclaredMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
 			method.setAccessible(true);
-			// 4、调用想要执行的方法
 			method.invoke(this, req, resp);
 		}
 		catch (NoSuchMethodException | SecurityException e) {

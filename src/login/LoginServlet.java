@@ -38,15 +38,16 @@ public class LoginServlet extends HttpServlet {
 			return;
 		}
 
+		
 		if (ma != null) {
 			session.setAttribute("userName", userName);
-			List<Manager> onLineAdminList = (List<Manager>) getServletContext().getAttribute("onLineAdminList");
-			onLineAdminList.add(ma);
+	/*		List<Manager> onLineAdminList = (List<Manager>) getServletContext().getAttribute("onLineAdminList");
+			onLineAdminList.add(ma);*/
 			resp.sendRedirect(req.getContextPath() + "/student?method=pageList");
 		} else {
 
 			session.setAttribute("err1", "账户密码错误");
-			resp.sendRedirect(req.getContextPath() + "/student?method=pageList");
+			resp.sendRedirect(req.getContextPath() + "/jsp/login.jsp");
 		}
 
 	}

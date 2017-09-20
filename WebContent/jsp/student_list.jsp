@@ -38,6 +38,7 @@
 			<li><a href="#">班级管理</a></li>
 			<li><a href="${pageContext.request.contextPath}/Classcourseselevt?methods=findAllStudent">课程管理</a></li>
 			<li><a href="#">教务管理</a></li>
+			<li>${userName}</li>
 			<li style="float: right;">
 				<!--注销按钮执行loginOutServlet-->
 				<form action="${pageContext.request.contextPath}/loginOutServlet">

@@ -355,46 +355,47 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 	public int getTotalCount() {
 		int count = 0;
 		try {
+			
 			connection = DBUtil.getConnection();
 			String sql = "select count(*) from student";
 			preparedStatement = connection.prepareStatement(sql);
 			resultSet = preparedStatement.executeQuery();
-			while(resultSet.next()){
-				 count = resultSet.getInt(1);
+			while (resultSet.next()) {
+				count = resultSet.getInt(1);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			DBUtil.close(connection, preparedStatement, resultSet);
 		}
 		System.out.println(count);
 		return count;
 	}
-	
-@Override
-public Manager selectBynamePassword(String name, String password) {
-	Manager manager = new Manager();
-	try {
-		connection = DBUtil.getConnection();
-		String sql = "select  id,password,account from manager where account=? and password=? ";
-		preparedStatement = connection.prepareStatement(sql);
-		preparedStatement.setString(1,name );
-		preparedStatement.setString(2, password);
-		resultSet = preparedStatement.executeQuery();
-		if (resultSet != null) {
-			while (resultSet.next()) {
-				int id = resultSet.getInt("id");
-				String account = resultSet.getString("account");
-				String password1 = resultSet.getString("password");
-				Manager manager1 = new Manager(id,account,password1);
+
+	@Override
+	public Manager selectBynamePassword(String name, String password) {
+		Manager manager = null;
+		try {
+			connection = DBUtil.getConnection();
+			String sql = "select  id,password,account from manager where account=? and password=? ";
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, name);
+			preparedStatement.setString(2, password);
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet != null) {
+				while (resultSet.next()) {
+					int id = resultSet.getInt("id");
+					String account = resultSet.getString("account");
+					String password1 = resultSet.getString("password");
+					manager = new Manager(id, account, password1);
+				}
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection, preparedStatement, resultSet);
 		}
-	} catch (Exception e) {
-		e.printStackTrace();
-	} finally {
-		DBUtil.close(connection, preparedStatement, resultSet);
-}
-	return null;
-}
+		return manager;
+	}
 
 }

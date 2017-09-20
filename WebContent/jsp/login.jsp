@@ -18,9 +18,7 @@
 	type="text/css" />
 
 <link href="css/font-awesome.css" rel="stylesheet">
-<link
-	href="http://libs.useso.com/css?family=Open+Sans:400italic,600italic,400,600"
-	rel="stylesheet">
+
 
 <link href="../moban/css/style.css" rel="stylesheet" type="text/css">
 <link href="../moban/css/pages/signin.css" rel="stylesheet"
